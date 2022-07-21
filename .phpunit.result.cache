@@ -1,0 +1,1 @@
+{"version":1,"defects":{"Code\\ProductTest::test_it_should_be_name_is_set":3},"times":{"Code\\ProductTest::test_it_should_be_name_is_set":0.005,"Code\\ProductTest::test_it_should_be_price_is_set":0,"Code\\ProductTest::test_it_should_be_slug_is_set":0}}
