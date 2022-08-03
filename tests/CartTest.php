@@ -114,19 +114,19 @@ class CartTest extends TestCase
         $this->assertEquals(40, $cart->sumAllPrices());
     }
 
-    public function test_incomplete()
-    {
-        $this->markTestIncomplete('Teste não completo');
-    }
+    // public function test_incomplete()
+    // {
+    //     $this->markTestIncomplete('Teste não completo');
+    // }
     /**
      * @requires  PHP == 5.3
      */
-    public function test_specific_php_version()
-    {
-        // if (PHP_VERSION != 5.3) $this->markTestSkipped('Apenas para versão abaixo de 7');
+    // public function test_specific_php_version()
+    // {
+    //     // if (PHP_VERSION != 5.3) $this->markTestSkipped('Apenas para versão abaixo de 7');
 
-        $this->assertTrue(true);
-    }
+    //     $this->assertTrue(true);
+    // }
     /**
      * @test
      */
