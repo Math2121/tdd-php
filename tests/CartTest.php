@@ -65,13 +65,15 @@ class CartTest extends TestCase
 
     public function test_it_should_be_able_verify_correct_products_in_a_cart()
     {
-        $product =    $this->product;
-        $product->setName('Teste 12');
-        $product->setPrice(20);
-        $product->setSlug('teste-12');
+        // $product =    $this->product;
+        // $product->setName('Teste 12');
+        // $product->setPrice(20);
+        // $product->setSlug('teste-12');
+        $productStub = $this->getStubProduct();
+
 
         $cart =  $this->cart;
-        $cart->addProduct($product);
+        $cart->addProduct($productStub);
 
         $this->assertEquals('Teste 12', $cart->getProducts()[0]->getName());
         $this->assertEquals(20, $cart->getProducts()[0]->getPrice());
@@ -116,13 +118,34 @@ class CartTest extends TestCase
     {
         $this->markTestIncomplete('Teste não completo');
     }
-/**
- * @requires  PHP == 5.3
- */
+    /**
+     * @requires  PHP == 5.3
+     */
     public function test_specific_php_version()
     {
         // if (PHP_VERSION != 5.3) $this->markTestSkipped('Apenas para versão abaixo de 7');
 
         $this->assertTrue(true);
+    }
+    /**
+     * @test
+     */
+    public function if_log_is_save_when_is_add_a_new_product()
+    {
+        $cart = $this->cart;
+
+        $logMock = $this->getMockBuilder(Log::class)->setMethods(['log'])->getMock();
+
+        $logMock->expects($this->once())->method('log')->with($this->equalTo('Add Product'));
+
+        $cart->addProduct($this->getStubProduct(),$logMock);
+    }
+    private function getStubProduct()
+    {
+        $productStub = $this->createMock(Produto::class);
+        $productStub->method('getName')->willReturn('Teste 12');
+        $productStub->method('getPrice')->willReturn(20);
+        $productStub->method('getSlug')->willReturn('teste-12');
+        return $productStub;
     }
 }

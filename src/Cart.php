@@ -5,10 +5,12 @@ namespace Code;
 class Cart
 {
     private array $items = [];
-    
-    public function addProduct(object $product)
+
+    public function addProduct(object $product, Log $log = null)
     {
         $this->items[] = $product;
+        if (!is_null($log))
+            $log->log('Add Product');
     }
     public function getProducts()
     {
