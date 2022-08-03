@@ -28,8 +28,11 @@ class ProductTest extends TestCase
         $this->assertEquals(20, $product->getPrice());
     }
 
+    /**
+     * @test
+     */
 
-    public function test_it_should_be_slug_is_set()
+    public function it_should_be_slug_is_set()
     {
         $product =  $this->product;
         $product->setSlug('teste-1');
